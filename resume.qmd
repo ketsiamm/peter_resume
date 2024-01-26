@@ -2,85 +2,52 @@
 layout: cv
 title: Ketsiammen Peter's CV
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
+# Ketsiammen Peter
+aspiring Data Scientist
 
-<div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
+<a href="www.linkedin.com/in/ketsiammen-monthe-yann-peter-b690ab263">My linkedin page</a>
 </div>
 
 
-## Currently
+## Profile summary
 
-Standing on the shoulders of giants
-
-### Specialized in
-
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
+Passionate data science and tech enthusiast eager to apply my academic knowledge and hands-on skills in a dynamic setting. Detail-oriented and dedicated individual with a strong foundation in Microsoft Office Suite, specializing in Word, PowerPoint, and Excel for document creation, presentations, and data entry. Proficient in leveraging Python for efficient problem-solving and scripting, with a focus on clean code practices. Experienced in MySQL for database management, showcasing abilities in data retrieval, manipulation, and basic optimization. Excited about expanding expertise in advanced database design and query optimization. Recognized for adaptability, quick learning, and a commitment to using technology for effective problem resolution. Seeking opportunities to contribute and grow in a challenging environment.
 
 
-### Research interests
 
-Cooling, power series, optics, alchemy, planetary motions, apples.
+## Language
+french(native), english(advanced)
 
 
 ## Education
 
-`1654-1660`
-__The King's School, Grantham.__
+`2022-now`
+__Brigham Young University, Idaho.__
 
-`June 1661 - now`
-__Trinity College, Cambridge__
-
-- Sizar
-
-`1667 - death`
-__Trinity College, Cambridge__
-
-- Fellow
+studying Data Science
 
 
 
-## Awards
+## Experience
 
-`2012`
-President, *Royal Society*, London, UK
+`March 2023`
+Allen Design Company
 
-Associate, *French Academy of Science*, Paris, France
+Collaborated with Allen Designs, a small business in Las Vegas, Nevada, specializing in crafting functional and aesthetically pleasing interior spaces to address the needs in managing finances and executing effective digital marketing strategies.
 
+improved company website by proposing various website template, Logos ,slogans and names.
 
-
-## Publications
-
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
-
-### Journals
-
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
-
-`1669`
-Lectiones opticæ.
-
-etc. etc. etc.
-
-### Patents
-
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
+Advised various marketing plans to help company reach more customers.
 
 
-## Occupation
+## skils
 
-`1600`
-__Royal Mint__, London
+### computer skills
 
-- Warden
-- Minted coins
+Microsoft Office Suite: Competent in utilizing essential functions of Word for document creation, PowerPoint for basic presentations, and Excel for fundamental data entry and spreadsheet tasks. 
 
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
+Programming Languages and Database Management:  Python: Proficient in writing and debugging Python code, with a focus on problem-solving and scripting tasks.
+ MySQL: Competent in database management using MySQL, including data retrieval, manipulation, and basic optimization. Eager to expand skills in database design and advanced query optimization.
 
 
 
