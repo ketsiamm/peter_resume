@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - [what's in a name ]"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "[Ketsiammen Peter]"
 format:
   html:
     self-contained: true
@@ -44,13 +44,20 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 #| code-summary: Read and format project data
 # Include and execute your code here
 df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
+
+
+
+# Display the 'UT' values where the 'name' is 'Oliver'
+oliver_sum = df.['name'== "Oliver", 'UT'].sum()
+print(oliver_sum)
+
 ```
 
 __Highlight the Questions and Tasks__
 
 ## QUESTION|TASK 1
 
-__COPY PASTE QUESTION|TASK 1 FROM THE PROJECT HERE__
+__How does your name at your birth year compare to its use historically?__
 
 _type your results and analysis here_
 
