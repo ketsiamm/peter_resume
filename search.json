@@ -291,41 +291,41 @@
     "href": "resume.html",
     "title": "Ketsiammen Peter’s CV",
     "section": "",
-    "text": "Physicist, Mathematician, Cambridge professor.\n\nisaac@applesdofall.org | My wikipedia page\n\n\n\nStanding on the shoulders of giants\n\n\nLaws of motion, gravitation, minting coins, disliking Robert Hooke\n\n\n\nCooling, power series, optics, alchemy, planetary motions, apples.\n\n\n\n\n1654-1660 The King’s School, Grantham.\nJune 1661 - now Trinity College, Cambridge\n\nSizar\n\n1667 - death Trinity College, Cambridge\n\nFellow\n\n\n\n\n2012 President, Royal Society, London, UK\nAssociate, French Academy of Science, Paris, France\n\n\n\n\n\n\n1669 Newton Sir I, De analysi per æquationes numero terminorum infinitas.\n1669 Lectiones opticæ.\netc. etc. etc.\n\n\n\n2012 Infinitesimal calculus for solutions to physics problems, SMBC patent 001\n\n\n\n\n1600 Royal Mint, London\n\nWarden\nMinted coins\n\n1600 Lucasian professor of Mathematics, Cambridge University"
+    "text": "aspiring Data Scientist\nMy linkedin page"
   },
   {
-    "objectID": "resume.html#currently",
-    "href": "resume.html#currently",
+    "objectID": "resume.html#profile-summary",
+    "href": "resume.html#profile-summary",
     "title": "Ketsiammen Peter’s CV",
-    "section": "",
-    "text": "Standing on the shoulders of giants\n\n\nLaws of motion, gravitation, minting coins, disliking Robert Hooke\n\n\n\nCooling, power series, optics, alchemy, planetary motions, apples."
+    "section": "Profile summary",
+    "text": "Profile summary\nPassionate data science and tech enthusiast eager to apply my academic knowledge and hands-on skills in a dynamic setting. Detail-oriented and dedicated individual with a strong foundation in Microsoft Office Suite, specializing in Word, PowerPoint, and Excel for document creation, presentations, and data entry. Proficient in leveraging Python for efficient problem-solving and scripting, with a focus on clean code practices. Experienced in MySQL for database management, showcasing abilities in data retrieval, manipulation, and basic optimization. Excited about expanding expertise in advanced database design and query optimization. Recognized for adaptability, quick learning, and a commitment to using technology for effective problem resolution. Seeking opportunities to contribute and grow in a challenging environment."
+  },
+  {
+    "objectID": "resume.html#language",
+    "href": "resume.html#language",
+    "title": "Ketsiammen Peter’s CV",
+    "section": "Language",
+    "text": "Language\nfrench(native), english(advanced)"
   },
   {
     "objectID": "resume.html#education",
     "href": "resume.html#education",
     "title": "Ketsiammen Peter’s CV",
-    "section": "",
-    "text": "1654-1660 The King’s School, Grantham.\nJune 1661 - now Trinity College, Cambridge\n\nSizar\n\n1667 - death Trinity College, Cambridge\n\nFellow"
+    "section": "Education",
+    "text": "Education\n2022-now Brigham Young University, Idaho.\nstudying Data Science"
   },
   {
-    "objectID": "resume.html#awards",
-    "href": "resume.html#awards",
+    "objectID": "resume.html#experience",
+    "href": "resume.html#experience",
     "title": "Ketsiammen Peter’s CV",
-    "section": "",
-    "text": "2012 President, Royal Society, London, UK\nAssociate, French Academy of Science, Paris, France"
+    "section": "Experience",
+    "text": "Experience\nMarch 2023 Allen Design Company\nCollaborated with Allen Designs, a small business in Las Vegas, Nevada, specializing in crafting functional and aesthetically pleasing interior spaces to address the needs in managing finances and executing effective digital marketing strategies.\nimproved company website by proposing various website template, Logos ,slogans and names.\nAdvised various marketing plans to help company reach more customers."
   },
   {
-    "objectID": "resume.html#publications",
-    "href": "resume.html#publications",
+    "objectID": "resume.html#skils",
+    "href": "resume.html#skils",
     "title": "Ketsiammen Peter’s CV",
-    "section": "",
-    "text": "1669 Newton Sir I, De analysi per æquationes numero terminorum infinitas.\n1669 Lectiones opticæ.\netc. etc. etc.\n\n\n\n2012 Infinitesimal calculus for solutions to physics problems, SMBC patent 001"
-  },
-  {
-    "objectID": "resume.html#occupation",
-    "href": "resume.html#occupation",
-    "title": "Ketsiammen Peter’s CV",
-    "section": "",
-    "text": "1600 Royal Mint, London\n\nWarden\nMinted coins\n\n1600 Lucasian professor of Mathematics, Cambridge University"
+    "section": "skils",
+    "text": "skils\n\ncomputer skills\nMicrosoft Office Suite: Competent in utilizing essential functions of Word for document creation, PowerPoint for basic presentations, and Excel for fundamental data entry and spreadsheet tasks.\nProgramming Languages and Database Management: Python: Proficient in writing and debugging Python code, with a focus on problem-solving and scripting tasks. MySQL: Competent in database management using MySQL, including data retrieval, manipulation, and basic optimization. Eager to expand skills in database design and advanced query optimization."
   }
 ]
