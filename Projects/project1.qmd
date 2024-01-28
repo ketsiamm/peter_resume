@@ -48,8 +48,13 @@ df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-
 
 
 # # Display the 'UT' values where the 'name' is 'Oliver'
-# oliver_sum = df.['name'== "Oliver", 'UT'].sum()
-# print(oliver_sum)
+felisha = df.query('name == "Felisha"').sort_values(by='year', ascending=True)
+
+# # # print(oliver_sum)
+# oliver_in_utah
+
+felisha
+
 
 ```
 
@@ -65,6 +70,8 @@ _type your results and analysis here_
 #| label: Q1
 #| code-summary: Read and format data
 # Include and execute your code here
+
+
 
 
 ```
