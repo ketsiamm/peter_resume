@@ -48,12 +48,12 @@ df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-
 
 
 # # Display the 'UT' values where the 'name' is 'Oliver'
-felisha = df.query('name == "Felisha"').sort_values(by='year', ascending=True)
+# felisha = df.query('name == "Felisha"').sort_values(by='year', ascending=True)
 
 # # # print(oliver_sum)
 # oliver_in_utah
 
-felisha
+# felisha
 
 
 ```
@@ -71,6 +71,11 @@ _type your results and analysis here_
 #| code-summary: Read and format data
 # Include and execute your code here
 
+peter_in_2000 = df.query('name == "Peter" and year == 2000')['Total']
+peter_in_history = df.query('name == "Peter"')
+peter_in_history
+# peter_in_2000
+
 
 
 
@@ -84,11 +89,27 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+
+# chart_2000 = px.bar(
+#     peter_in_2000,
+#     x="name",  
+#     y="Total",
+#     title="Bar Chart for Peter in 2000"
+# )
+
+
+chart_history = px.bar(
+    peter_in_history,
+    x="year",  
+    y="Total",
+    title="Bar Chart for Peter's Historical Data"
+).add_bar(x = [2000],y=[3137], marker_color ='red')
+
+
+
+# chart_2000.show()
+chart_history.show()
+
 ```
 
 
@@ -98,21 +119,21 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
 
-display(mydat)
+    # .groupby('year')\
+    # .sum()\
+    # .reset_index()\
+    # .tail(10)\
+    # .filter(["year", "AK","AR"])
+
+display(peter_in_history)
 
 ```
 
 
 ## QUESTION|TASK 2
 
-__COPY PASTE QUESTION|TASK 2 FROM THE PROJECT HERE__
+__If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?__
 
 _type your results and analysis here_
 
@@ -120,8 +141,13 @@ _type your results and analysis here_
 #| label: Q2
 #| code-summary: Read and format data
 # Include and execute your code here
+brittany = df.query('name == "Brittany"')
 
+brittany_max = brittany[['year','Total']]
+# brittany_total = brittany_max['Total'].max().filter(['Total','year'])
+brittany_max_total = brittany_max[brittany_max['Total'] == brittany_max['Total'].max()].filter(['year', 'Total'])
 
+brittany_max_total
 ```
 
 _include figures in chunks and discuss your findings in the figure._
@@ -132,9 +158,10 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
+chart = px.bar(
+    brittany,
+    x="year", 
+    y="Total"
 )
 chart.show()
 ```
@@ -146,11 +173,11 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
+mydat = df.head(1000)
+    # .groupby('year')\
+    # .sum()\
+    # .reset_index()\
+    # .tail(10)\
     .filter(["year", "AK","AR"])
 
 display(mydat)
@@ -160,7 +187,7 @@ display(mydat)
 
 ## QUESTION|TASK 3
 
-__COPY PASTE QUESTION|TASK 3 FROM THE PROJECT HERE__
+__Mary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names. What trends do you notice?__
 
 _type your results and analysis here_
 
@@ -168,7 +195,8 @@ _type your results and analysis here_
 #| label: Q3
 #| code-summary: Read and format data
 # Include and execute your code here
-
+list = ['Mary'.'Martha','Peter','Paul']
+filtered = df.filter
 
 ```
 
