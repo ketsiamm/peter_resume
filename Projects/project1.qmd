@@ -37,7 +37,7 @@ import plotly.express as px
 ## Elevator pitch
 
 _paste your elevator pitch here_
-_A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS._
+_  _
 
 ```{python}
 #| label: project data
@@ -45,15 +45,6 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 # Include and execute your code here
 df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
 
-
-
-# # Display the 'UT' values where the 'name' is 'Oliver'
-# felisha = df.query('name == "Felisha"').sort_values(by='year', ascending=True)
-
-# # # print(oliver_sum)
-# oliver_in_utah
-
-# felisha
 
 
 ```
@@ -64,18 +55,19 @@ __Highlight the Questions and Tasks__
 
 __How does your name at your birth year compare to its use historically?__
 
-_type your results and analysis here_
+_ compared to the average of my name in history which is 4955.21 my name during my birth year is with a total 3137 is below the average  _
 
 ```{python}
 #| label: Q1
 #| code-summary: Read and format data
+#| tbl-cap: "Peter in history"
 # Include and execute your code here
 
-peter_in_2000 = df.query('name == "Peter" and year == 2000')['Total']
-peter_in_history = df.query('name == "Peter"')
-peter_in_history
-# peter_in_2000
 
+peter_in_history = df.query('name == "Peter"')
+# average = peter_in_history['Total'].mean()
+# average
+peter_in_history
 
 
 
@@ -86,16 +78,8 @@ _include figures in chunks and discuss your findings in the figure._
 ```{python}
 #| label: Q1 chart
 #| code-summary: plot example
-#| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-
-# chart_2000 = px.bar(
-#     peter_in_2000,
-#     x="name",  
-#     y="Total",
-#     title="Bar Chart for Peter in 2000"
-# )
 
 
 chart_history = px.bar(
@@ -103,11 +87,9 @@ chart_history = px.bar(
     x="year",  
     y="Total",
     title="Bar Chart for Peter's Historical Data"
-).add_bar(x = [2000],y=[3137], marker_color ='red')
+).add_bar(x = [2000],y=[3137], marker_color ='red', name= 'peter in 2000')
 
 
-
-# chart_2000.show()
 chart_history.show()
 
 ```
@@ -116,17 +98,13 @@ chart_history.show()
 ```{python}
 #| label: Q1 table
 #| code-summary: table example
-#| tbl-cap: "Not much of a table"
+#| tbl-cap: "Peter in 2000"
 #| tbl-cap-location: top
 # Include and execute your code here
 
-    # .groupby('year')\
-    # .sum()\
-    # .reset_index()\
-    # .tail(10)\
-    # .filter(["year", "AK","AR"])
+peter_in_2000 = df.query('name == "Peter" and year == 2000')
+peter_in_2000
 
-display(peter_in_history)
 
 ```
 
@@ -135,19 +113,17 @@ display(peter_in_history)
 
 __If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?__
 
-_type your results and analysis here_
+_ My guess is that she was probably born in 1990, and she is 34 years old because that is the year that had the highest record of people born named Brittany. I wouldn't guess that she was born in 1971 and that she is 51 because that is the year with the lowest record of people named Brittany. _
 
 ```{python}
 #| label: Q2
 #| code-summary: Read and format data
+#| tbl-cap: "table of Brittany all over the years"
 # Include and execute your code here
-brittany = df.query('name == "Brittany"')
+brittany = df.query('name == "Brittany"')# query all the brittany
+brittany_max = brittany[['year','Total']]# query the brittany their birth year and the ttal name for that year
+brittany_max
 
-brittany_max = brittany[['year','Total']]
-# brittany_total = brittany_max['Total'].max().filter(['Total','year'])
-brittany_max_total = brittany_max[brittany_max['Total'] == brittany_max['Total'].max()].filter(['year', 'Total'])
-
-brittany_max_total
 ```
 
 _include figures in chunks and discuss your findings in the figure._
@@ -155,14 +131,14 @@ _include figures in chunks and discuss your findings in the figure._
 ```{python}
 #| label: Q2 chart
 #| code-summary: plot example
-#| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
 chart = px.bar(
     brittany,
     x="year", 
-    y="Total"
-)
+    y="Total",
+    title= "Brittany name from 1970 to 2015"
+).add_bar(x =[1990],y=[32562.5],marker_color = 'green', name ='highest Brittany from 1970 to 2015')
 chart.show()
 ```
 
@@ -170,17 +146,13 @@ chart.show()
 ```{python}
 #| label: Q2 table
 #| code-summary: table example
-#| tbl-cap: "Not much of a table"
+#| tbl-cap: "table of the year with the most Brittany"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)
-    # .groupby('year')\
-    # .sum()\
-    # .reset_index()\
-    # .tail(10)\
-    .filter(["year", "AK","AR"])
 
-display(mydat)
+brittany_max_total = brittany_max[brittany_max['Total'] == brittany_max['Total'].max()].filter(['year', 'Total'])
+
+brittany_max_total# return the year with the most Brittany
 
 ```
 
@@ -194,10 +166,17 @@ _type your results and analysis here_
 ```{python}
 #| label: Q3
 #| code-summary: Read and format data
+#| tbl-cap: "table of Mary,Martha,Peter,Paul from 1920 to 2000"
 # Include and execute your code here
-list = ['Mary'.'Martha','Peter','Paul']
-filtered = df.filter
+# list = ['Mary'.'Martha','Peter','Paul']
+filtered = df.query("name==['Mary','Martha','Peter','Paul']&year>= 1920 & year<=2000")
+filtered_1 = filtered.filter(['name','year','Total'])
 
+# average = filtered_1['Total'].mean()
+```
+```{python}
+filtered_1
+# average
 ```
 
 _include figures in chunks and discuss your findings in the figure._
@@ -205,15 +184,24 @@ _include figures in chunks and discuss your findings in the figure._
 ```{python}
 #| label: Q3 chart
 #| code-summary: plot example
-#| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
+
+chart = px.line(filtered_1, 
+    x="year", 
+    y="Total", 
+    color='name', 
+    line_group='name',  
+    title='Line Chart of Total over Years for Selected Names')
+
+
 chart.show()
+
 ```
+
+## QUESTION|TASK 4
+
+__Think of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage?__
 
 
 ```{python}
