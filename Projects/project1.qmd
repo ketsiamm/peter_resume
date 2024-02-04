@@ -36,7 +36,7 @@ import plotly.express as px
 
 ## Elevator pitch
 
-_paste your elevator pitch here_
+_ Overall the data contains key insight about the names accros the United State from 1920 to 2015. Christian names were the most popular ones but with time other name started to become more poular than the Christian names_
 _  _
 
 ```{python}
@@ -57,6 +57,7 @@ __How does your name at your birth year compare to its use historically?__
 
 _ compared to the average of my name in history which is 4955.21 my name during my birth year is with a total 3137 is below the average  _
 
+
 ```{python}
 #| label: Q1
 #| code-summary: Read and format data
@@ -65,15 +66,14 @@ _ compared to the average of my name in history which is 4955.21 my name during 
 
 
 peter_in_history = df.query('name == "Peter"')
-# average = peter_in_history['Total'].mean()
-# average
-peter_in_history
+average = peter_in_history['Total'].mean()
+
 
 
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
+
 
 ```{python}
 #| label: Q1 chart
@@ -82,19 +82,32 @@ _include figures in chunks and discuss your findings in the figure._
 # Include and execute your code here
 
 
-chart_history = px.bar(
+
+# scatter
+scatter_plot = px.scatter(
     peter_in_history,
-    x="year",  
+    x="year",
     y="Total",
-    title="Bar Chart for Peter's Historical Data"
-).add_bar(x = [2000],y=[3137], marker_color ='red', name= 'peter in 2000')
+    title="Scatter Plot with Trendline for Peter's Historical Data",
+    trendline="ols"  # Add a trendline using Ordinary Least Squares regression
+)
+# annotation
+scatter_plot.add_annotation(
+    text="Peter in 2000",
+    x=2000,
+    y=3137,
+    showarrow=True,
+    arrowhead=7,
+    arrowcolor='red'
 
+)
+# Show the plot
+scatter_plot.show()
 
-chart_history.show()
 
 ```
 
-
+_ here is a table of my name (Peter) in my birthdate and the highest peter in history to see the difference _
 ```{python}
 #| label: Q1 table
 #| code-summary: table example
@@ -103,7 +116,15 @@ chart_history.show()
 # Include and execute your code here
 
 peter_in_2000 = df.query('name == "Peter" and year == 2000')
-peter_in_2000
+peter_in_history = df.query('name == "Peter"')
+Peter_max_total = peter_in_history[peter_in_history['Total'] == peter_in_history['Total'].max()].filter(['year', 'Total'])
+
+print("peter_in_2000:")
+print(peter_in_2000)
+
+print("\nPeter_max_total:")
+print(Peter_max_total)
+
 
 
 ```
@@ -121,27 +142,71 @@ _ My guess is that she was probably born in 1990, and she is 34 years old becaus
 #| tbl-cap: "table of Brittany all over the years"
 # Include and execute your code here
 brittany = df.query('name == "Brittany"')# query all the brittany
-brittany_max = brittany[['year','Total']]# query the brittany their birth year and the ttal name for that year
-brittany_max
+brittany_max = brittany[['year','Total']]# query the brittany their birth year and the total name for that year
+
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
+
 
 ```{python}
 #| label: Q2 chart
 #| code-summary: plot example
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(
+
+# Filter data for the name 'Brittany'
+brittany = df.query('name == "Brittany"')
+import plotly.express as px
+import plotly.graph_objects as go
+
+# brittany
+brittany = df.query('name == "Brittany"')
+
+# Create a line chart
+chart = px.line(
     brittany,
-    x="year", 
+    x="year",
     y="Total",
-    title= "Brittany name from 1970 to 2015"
-).add_bar(x =[1990],y=[32562.5],marker_color = 'green', name ='highest Brittany from 1970 to 2015')
+    title="Line Chart with Trendline and Annotation"
+)
+
+# Add a trace for the trendline
+trendline_trace = go.Scatter(
+    x=[1990],
+    y=[32562.5],
+    mode='markers',
+    marker=dict(color='green'),
+    name='Highest Brittany in 1990'
+)
+
+chart.add_trace(trendline_trace)
+
+# Update traces to add a trendline
+chart.update_traces(
+    mode='lines',
+    line=dict(color='blue'),
+    selector=dict(type='scatter')
+)
+
+# Add a text annotation
+chart.add_annotation(
+    text="Highest Brittany in 1990",
+    x=1990,
+    y=32562.5,
+    showarrow=True,
+    arrowhead=2,
+    arrowcolor='green'
+)
+
+# Show the plot
 chart.show()
+
+
+
 ```
 
+_ here is a table of the name Brittany, the total and the year where it reach it peak  
 
 ```{python}
 #| label: Q2 table
@@ -161,7 +226,13 @@ brittany_max_total# return the year with the most Brittany
 
 __Mary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names. What trends do you notice?__
 
-_type your results and analysis here_
+_ They all mostly followed the same pattern 
+Mary: a slightly increase in 1921 a decrease in 1936 a peak in 1950 and it continues to decreased to the end
+Paul: an increase that reach its peak in 1953 and a decrease in the end
+Martha: a slightly increase that reach its peak in 1947 and a decrease in the end
+Peter: an increase that reach its peak in 1956 and a constant decrease
+
+
 
 ```{python}
 #| label: Q3
@@ -171,15 +242,15 @@ _type your results and analysis here_
 # list = ['Mary'.'Martha','Peter','Paul']
 filtered = df.query("name==['Mary','Martha','Peter','Paul']&year>= 1920 & year<=2000")
 filtered_1 = filtered.filter(['name','year','Total'])
-
 # average = filtered_1['Total'].mean()
 ```
+
+
 ```{python}
-filtered_1
+# filtered_1.head()
 # average
 ```
 
-_include figures in chunks and discuss your findings in the figure._
 
 ```{python}
 #| label: Q3 chart
@@ -192,7 +263,7 @@ chart = px.line(filtered_1,
     y="Total", 
     color='name', 
     line_group='name',  
-    title='Line Chart of Total over Years for Selected Names')
+    title='Line Chart of Mary, Martha, Peter, and Paul')
 
 
 chart.show()
@@ -202,21 +273,56 @@ chart.show()
 ## QUESTION|TASK 4
 
 __Think of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage?__
+_i choose the name Bella from the Twillight moovie. I noticed that overall from the year 2000 to 2010 there was an increase from 245 to 5109 an in crease of 1985.71%. From the movie realease in 2008 to the next year we witneesed an increseased of 53.78% compared to the increased from 2000 to the release year where it was 36.32%_
 
 
 ```{python}
-#| label: Q3 table
+#| label: Q4
+#| code-summary: Read and format data
+#| tbl-cap: ""
+
+
+```
+
+
+
+```{python}
+#| label: Q4 chart
+#| code-summary: plot example
+#| fig-align: center
+# Include and execute your code here
+
+bella = df.query('name == "Bella"')
+year_bella = bella.query('year == 2008')
+year_bella
+
+chart = px.line(bella, 
+    x="year", 
+    y="Total",  
+    title='Line Chart of Total over Years for Selected Names',
+    
+    )
+
+chart.add_annotation(
+    text="Release date",
+    x=2008,
+    y=2778,
+    showarrow=True,
+    arrowhead=2,
+    arrowcolor='red'
+)
+
+
+chart.show()
+
+```
+
+```{python}
+#| label: Q4 table
 #| code-summary: table example
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
 
-display(mydat)
 
 ```
