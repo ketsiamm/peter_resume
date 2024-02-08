@@ -323,6 +323,9 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-
-
+John = df.query('name == "John " & name == "Peter"')
+arrange = df.filter(['name','year'])
+arrange
+drop = arrange.drop(columns= ['name'])
+drop
 ```
