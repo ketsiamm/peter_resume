@@ -43,14 +43,15 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 #| label: project data
 #| code-summary: Read and format project data
 # Include and execute your code here
-df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
+df = pd.read_json("https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json")
 ```
 
 __Highlight the Questions and Tasks__
 
 ## QUESTION|TASK 1
 
-__COPY PASTE QUESTION|TASK 1 FROM THE PROJECT HERE__
+__Fix all of the varied missing data types in the data to be consistent (all missing values should be displayed as “NaN”). In your report include one record example (one row) from your new data, in the raw JSON format. Your example should display the “NaN” for at least one missing value.__
+
 
 _type your results and analysis here_
 
@@ -58,8 +59,16 @@ _type your results and analysis here_
 #| label: Q1
 #| code-summary: Read and format data
 # Include and execute your code here
-
-
+# missing_values = df.isna().sum()
+# missing_values
+# changed_years = df['year'].fillna(method = 'bfill')
+# changed_years
+# missing_values = df.loc[df['minutes_delayed_carrier'].isna(), 'minutes_delayed_carrier']
+# missing_values
+# df['minutes_delayed_carrier']
+mean_d_carrier = df['minutes_delayed_carrier'].mean()
+changed_d_carrier = df['minutes_delayed_carrier'].fillna(mean_d_carrier)
+changed_d_carrier
 ```
 
 _include figures in chunks and discuss your findings in the figure._

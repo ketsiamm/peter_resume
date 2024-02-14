@@ -24,6 +24,8 @@ execute:
   warning: false
     
 ---
+### uncomment
+<!-- 
 
 ```{python}
 #| label: libraries
@@ -58,7 +60,7 @@ _type your results and analysis here_
 #| label: Q1
 #| code-summary: Read and format data
 # Include and execute your code here
-
+c = df[]
 
 ```
 
@@ -189,4 +191,4 @@ mydat = df.head(1000)\
 
 display(mydat)
 
-```
+``` -->

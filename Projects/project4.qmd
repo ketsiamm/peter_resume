@@ -24,7 +24,8 @@ execute:
   warning: false
     
 ---
-
+### uncomment
+<!-- 
 ```{python}
 #| label: libraries
 #| include: false
@@ -189,4 +190,4 @@ mydat = df.head(1000)\
 
 display(mydat)
 
-```
+``` -->
