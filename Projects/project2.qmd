@@ -36,8 +36,7 @@ import plotly.express as px
 
 ## Elevator pitch
 
-_paste your elevator pitch here_
-_A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS._
+_overall the flight data gives insights about flights in seven different airport it has important feature to visualize and analyse about flight delay   ._
 
 ```{python}
 #| label: project data
@@ -46,7 +45,7 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 df_original = pd.read_json('https://github.com/byuidatascience/data4missing/raw/master/data-raw/flights_missing/flights_missing.json')
 ```
 
-__Highlight the Questions and Tasks__
+
 
 ## QUESTION|TASK 1
 
@@ -95,7 +94,6 @@ raw_json = df.head(1).to_json(orient='records')
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
 
 ```{python}
 #| label: Q1 chart
@@ -103,11 +101,8 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-raw_json = df.to_json()
 
-print(raw_json)
-
-
+raw_json
 ```
 
 
@@ -138,11 +133,10 @@ worst_airport = worst_airport.reset_index()
 
 
 
-
-
 ```
 
 
+_ithis table shows the different number of total delay,average delay and portion delay by airport. It can help us understand which airport has the worst delay by flight _
 
 ```{python}
 #| label: Q2 table
@@ -181,7 +175,7 @@ best_months = best_months.reset_index()
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
+
 
 ```{python}
 #| label: Q3 chart
@@ -249,7 +243,9 @@ weather.head()
 ## QUESTION|TASK 5
 __Using the new weather variable calculated above, create a barplot showing the proportion of all flights that are delayed by weather at each airport. Discuss what you learn from this graph.__
 
-_as we can see this chart the San Franscisco airport has the highest proportion of flight delayed by weather and that the Atlanta airport has the lowest one._
+_as we can see this chart the San Franscisco airport has the highest proportion of flight delayed by weather and that the Atlanta airport has the lowest one. _
+
+
 ```{python}
 #| label: Q5 chart
 #| code-summary: plot example
@@ -257,16 +253,13 @@ _as we can see this chart the San Franscisco airport has the highest proportion 
 #| fig-align: center
 # Include and execute your code here
 
-# Assuming 'weather' DataFrame contains the weather-related flight delay data
-
-# Create a bar plot using Plotly Express
 fig = px.bar(weather, x='airport_code', y='proportion_weather_delay',
              labels={'airport_code': 'Airport Code', 'proportion_weather_delay': 'Proportion of Delayed Flights due to Weather'},
              title='Proportion of Delayed Flights due to Weather by Airport')
 
-# Rotate x-axis labels for better readability
+
 fig.update_layout(xaxis={'categoryorder':'total ascending'})
 
-# Show the plot
 fig.show()
 
+```
