@@ -25,13 +25,14 @@ execute:
     
 ---
 ### uncomment
-<!-- 
+
 ```{python}
 #| label: libraries
 #| include: false
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import sqlite3
 ```
 
 
@@ -44,14 +45,27 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 #| label: project data
 #| code-summary: Read and format project data
 # Include and execute your code here
-df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv")
+
+import sqlite3
+import pandas as pd
+
+sqlite_file = "C:\\Users\\ketsi\\OneDrive\\Desktop\\lahmansbaseballdb.sqlite"
+con = sqlite3.connect(sqlite_file)
+
+q = 'SELECT * FROM allstarfull'
+results = pd.read_sql_query(q, con)
+
+print(results)
+
+
+
 ```
 
 __Highlight the Questions and Tasks__
 
 ## QUESTION|TASK 1
 
-__COPY PASTE QUESTION|TASK 1 FROM THE PROJECT HERE__
+__Write an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report__
 
 _type your results and analysis here_
 
@@ -60,6 +74,12 @@ _type your results and analysis here_
 #| code-summary: Read and format data
 # Include and execute your code here
 
+p = '''
+
+SELECT allstarfull.playerID, schoolID, salary ,allstarfull.yearID,allstarfull.teamID FROM allstarfull,Salaries,Schools
+'''
+con = sqlite3.connect(sqlite_file)
+results = pd.read_sql_query(p,con)
 
 ```
 
