@@ -24,7 +24,7 @@ execute:
   warning: false
     
 ---
-### uncomment
+
 
 ```{python}
 #| label: libraries
@@ -76,10 +76,25 @@ _type your results and analysis here_
 
 p = '''
 
-SELECT allstarfull.playerID, schoolID, salary ,allstarfull.yearID,allstarfull.teamID FROM allstarfull,Salaries,Schools
+SELECT allstarfull.playerID, schools.schoolID, Salaries.salary, allstarfull.yearID, allstarfull.teamID
+FROM allstarfull
+JOIN  Salaries ON allstarfull.playerID =  Salaries.playerID
+JOIN  CollegePlaying ON  CollegePlaying.playerID = allstarfull.playerID
+JOIN schools ON  CollegePlaying.schoolID  = schools.schoolID 
+order by salary desc
+LIMIT 5
+
 '''
+```
+
+
+
+```{python}
+
 con = sqlite3.connect(sqlite_file)
 results = pd.read_sql_query(p,con)
+results.tail()
+
 
 ```
 
@@ -91,11 +106,11 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+# chart = px.bar(df.head(200),
+#     x="name", 
+#     y="AK"
+# )
+# chart.show()
 ```
 
 
@@ -105,14 +120,14 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
+# mydat = df.head(1000)\
+#     .groupby('year')\
+#     .sum()\
+#     .reset_index()\
+#     .tail(10)\
+#     .filter(["year", "AK","AR"])
 
-display(mydat)
+# display(mydat)
 
 ```
 
@@ -139,11 +154,11 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+# chart = px.bar(df.head(200),
+#     x="name", 
+#     y="AK"
+# )
+# chart.show()
 ```
 
 
@@ -153,14 +168,14 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
+# mydat = df.head(1000)\
+#     .groupby('year')\
+#     .sum()\
+#     .reset_index()\
+#     .tail(10)\
+#     .filter(["year", "AK","AR"])
 
-display(mydat)
+# display(mydat)
 
 ```
 
@@ -187,11 +202,11 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-chart = px.bar(df.head(200),
-    x="name", 
-    y="AK"
-)
-chart.show()
+# chart = px.bar(df.head(200),
+#     x="name", 
+#     y="AK"
+# )
+# chart.show()
 ```
 
 
@@ -201,13 +216,13 @@ chart.show()
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-mydat = df.head(1000)\
-    .groupby('year')\
-    .sum()\
-    .reset_index()\
-    .tail(10)\
-    .filter(["year", "AK","AR"])
+# mydat = df.head(1000)\
+#     .groupby('year')\
+#     .sum()\
+#     .reset_index()\
+#     .tail(10)\
+#     .filter(["year", "AK","AR"])
 
-display(mydat)
+# display(mydat)
 
-``` -->
+```

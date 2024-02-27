@@ -214,7 +214,7 @@
     "href": "Projects/project3.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "uncomment\n\n\n\n\n\n\n Back to top"
+    "text": "paste your elevator pitch here A SHORT (4-5 SENTENCES) PARAGRAPH THAT DESCRIBES KEY INSIGHTS TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS.\n\n\nRead and format project data\n# Include and execute your code here\n\nimport sqlite3\nimport pandas as pd\n\nsqlite_file = \"C:\\\\Users\\\\ketsi\\\\OneDrive\\\\Desktop\\\\lahmansbaseballdb.sqlite\"\ncon = sqlite3.connect(sqlite_file)\n\nq = 'SELECT * FROM allstarfull'\nresults = pd.read_sql_query(q, con)\n\nprint(results)\n\n\n        ID   playerID  yearID  gameNum        gameID teamID  team_ID lgID  GP   \n0        1  gomezle01    1933        0  ALS193307060    NYA      921   AL   1  \\\n1        2  ferreri01    1933        0  ALS193307060    BOS      912   AL   1   \n2        3  gehrilo01    1933        0  ALS193307060    NYA      921   AL   1   \n3        4  gehrich01    1933        0  ALS193307060    DET      919   AL   1   \n4        5  dykesji01    1933        0  ALS193307060    CHA      915   AL   1   \n...    ...        ...     ...      ...           ...    ...      ...  ...  ..   \n5337  5369  smithwi04    2019        0  ALS201907090    SFN     2920   NL   1   \n5338  5370  sorokmi01    2019        0  ALS201907090    ATL     2897   NL   1   \n5339  5371  storytr01    2019        0  ALS201907090    COL     2904   NL   1   \n5340  5372  woodrbr01    2019        0  ALS201907090    MIL     2911   NL   1   \n5341  5373  yateski01    2019        0  ALS201907090    SDN     2918   NL   0   \n\n      startingPos  \n0             1.0  \n1             2.0  \n2             3.0  \n3             4.0  \n4             5.0  \n...           ...  \n5337          NaN  \n5338          NaN  \n5339          NaN  \n5340          NaN  \n5341          NaN  \n\n[5342 rows x 10 columns]\n\n\nHighlight the Questions and Tasks"
   },
   {
     "objectID": "Projects/project5.html",
@@ -264,5 +264,33 @@
     "title": "Ketsiammen Peter’s CV",
     "section": "skils",
     "text": "skils\n\ncomputer skills\nMicrosoft Office Suite: Competent in utilizing essential functions of Word for document creation, PowerPoint for basic presentations, and Excel for fundamental data entry and spreadsheet tasks.\nProgramming Languages and Database Management: Python: Proficient in writing and debugging Python code, with a focus on problem-solving and scripting tasks. MySQL: Competent in database management using MySQL, including data retrieval, manipulation, and basic optimization. Eager to expand skills in database design and advanced query optimization."
+  },
+  {
+    "objectID": "Projects/project3.html#elevator-pitch",
+    "href": "Projects/project3.html#elevator-pitch",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "paste your elevator pitch here A SHORT (4-5 SENTENCES) PARAGRAPH THAT DESCRIBES KEY INSIGHTS TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS.\n\n\nRead and format project data\n# Include and execute your code here\n\nimport sqlite3\nimport pandas as pd\n\nsqlite_file = \"C:\\\\Users\\\\ketsi\\\\OneDrive\\\\Desktop\\\\lahmansbaseballdb.sqlite\"\ncon = sqlite3.connect(sqlite_file)\n\nq = 'SELECT * FROM allstarfull'\nresults = pd.read_sql_query(q, con)\n\nprint(results)\n\n\n        ID   playerID  yearID  gameNum        gameID teamID  team_ID lgID  GP   \n0        1  gomezle01    1933        0  ALS193307060    NYA      921   AL   1  \\\n1        2  ferreri01    1933        0  ALS193307060    BOS      912   AL   1   \n2        3  gehrilo01    1933        0  ALS193307060    NYA      921   AL   1   \n3        4  gehrich01    1933        0  ALS193307060    DET      919   AL   1   \n4        5  dykesji01    1933        0  ALS193307060    CHA      915   AL   1   \n...    ...        ...     ...      ...           ...    ...      ...  ...  ..   \n5337  5369  smithwi04    2019        0  ALS201907090    SFN     2920   NL   1   \n5338  5370  sorokmi01    2019        0  ALS201907090    ATL     2897   NL   1   \n5339  5371  storytr01    2019        0  ALS201907090    COL     2904   NL   1   \n5340  5372  woodrbr01    2019        0  ALS201907090    MIL     2911   NL   1   \n5341  5373  yateski01    2019        0  ALS201907090    SDN     2918   NL   0   \n\n      startingPos  \n0             1.0  \n1             2.0  \n2             3.0  \n3             4.0  \n4             5.0  \n...           ...  \n5337          NaN  \n5338          NaN  \n5339          NaN  \n5340          NaN  \n5341          NaN  \n\n[5342 rows x 10 columns]\n\n\nHighlight the Questions and Tasks"
+  },
+  {
+    "objectID": "Projects/project3.html#questiontask-1",
+    "href": "Projects/project3.html#questiontask-1",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "QUESTION|TASK 1",
+    "text": "QUESTION|TASK 1\nWrite an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\np = '''\n\nSELECT allstarfull.playerID, schools.schoolID, Salaries.salary, allstarfull.yearID, allstarfull.teamID\nFROM allstarfull\nJOIN  Salaries ON allstarfull.playerID =  Salaries.playerID\nJOIN  CollegePlaying ON  CollegePlaying.playerID = allstarfull.playerID\nJOIN schools ON  CollegePlaying.schoolID  = schools.schoolID \norder by salary desc\nLIMIT 5\n\n'''\n\n\n\n\nCode\ncon = sqlite3.connect(sqlite_file)\nresults = pd.read_sql_query(p,con)\nresults.tail()\n\n\n\n\n\n\n\n\n\nplayerID\nschoolID\nsalary\nyearID\nteamID\n\n\n\n\n0\npriceda01\nvandy\n30000000.0\n2010\nTBA\n\n\n1\npriceda01\nvandy\n30000000.0\n2011\nTBA\n\n\n2\npriceda01\nvandy\n30000000.0\n2012\nTBA\n\n\n3\npriceda01\nvandy\n30000000.0\n2014\nTBA\n\n\n4\npriceda01\nvandy\n30000000.0\n2015\nDET\n\n\n\n\n\n\n\ninclude figures in chunks and discuss your findings in the figure.\n\n\nplot example\n# Include and execute your code here\n# chart = px.bar(df.head(200),\n#     x=\"name\", \n#     y=\"AK\"\n# )\n# chart.show()\n\n\n\n\ntable example\n# Include and execute your code here\n# mydat = df.head(1000)\\\n#     .groupby('year')\\\n#     .sum()\\\n#     .reset_index()\\\n#     .tail(10)\\\n#     .filter([\"year\", \"AK\",\"AR\"])\n\n# display(mydat)"
+  },
+  {
+    "objectID": "Projects/project3.html#questiontask-2",
+    "href": "Projects/project3.html#questiontask-2",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "QUESTION|TASK 2",
+    "text": "QUESTION|TASK 2\nCOPY PASTE QUESTION|TASK 2 FROM THE PROJECT HERE\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n\n\nplot example\n# Include and execute your code here\n# chart = px.bar(df.head(200),\n#     x=\"name\", \n#     y=\"AK\"\n# )\n# chart.show()\n\n\n\n\ntable example\n# Include and execute your code here\n# mydat = df.head(1000)\\\n#     .groupby('year')\\\n#     .sum()\\\n#     .reset_index()\\\n#     .tail(10)\\\n#     .filter([\"year\", \"AK\",\"AR\"])\n\n# display(mydat)"
+  },
+  {
+    "objectID": "Projects/project3.html#questiontask-3",
+    "href": "Projects/project3.html#questiontask-3",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "QUESTION|TASK 3",
+    "text": "QUESTION|TASK 3\nCOPY PASTE QUESTION|TASK 3 FROM THE PROJECT HERE\ntype your results and analysis here\n\n\nRead and format data\n# Include and execute your code here\n\n\ninclude figures in chunks and discuss your findings in the figure.\n\n\nplot example\n# Include and execute your code here\n# chart = px.bar(df.head(200),\n#     x=\"name\", \n#     y=\"AK\"\n# )\n# chart.show()\n\n\n\n\ntable example\n# Include and execute your code here\n# mydat = df.head(1000)\\\n#     .groupby('year')\\\n#     .sum()\\\n#     .reset_index()\\\n#     .tail(10)\\\n#     .filter([\"year\", \"AK\",\"AR\"])\n\n# display(mydat)"
   }
 ]
