@@ -38,8 +38,7 @@ import sqlite3
 
 ## Elevator pitch
 
-_paste your elevator pitch here_
-_A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METRICS IN THE PROJECT RESULTS THINK TOP OR MOST IMPORTANT RESULTS._
+_Overall the lahmansbaseball database gives us important insight about baseball team and players here we can get insight with player school, name and performance ._
 
 ```{python}
 #| label: project data
@@ -60,13 +59,12 @@ print(results)
 
 ```
 
-__Highlight the Questions and Tasks__
 
 ## QUESTION|TASK 1
 
 __Write an SQL query to create a new dataframe about baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, and the yearID/teamID associated with each salary. Order the table by salary (highest to lowest) and print out the table in your report__
 
-_type your results and analysis here_
+_After analysing of the table there is no BYU-Idaho player that play Baseball at that level_
 
 ```{python}
 #| label: Q1
@@ -75,38 +73,34 @@ _type your results and analysis here_
 
 p = '''
 
-SELECT allstarfull.playerID, schools.schoolID, Salaries.salary, allstarfull.yearID, allstarfull.teamID
+SELECT allstarfull.playerID, schools.schoolID, schools.name_full, Salaries.salary, allstarfull.yearID, allstarfull.teamID
 FROM allstarfull
-JOIN  Salaries ON allstarfull.playerID =  Salaries.playerID
-JOIN  CollegePlaying ON  CollegePlaying.playerID = allstarfull.playerID
-JOIN schools ON  CollegePlaying.schoolID  = schools.schoolID 
-order by salary desc
-LIMIT 5
+JOIN CollegePlaying ON CollegePlaying.playerID = allstarfull.playerID
+JOIN schools ON CollegePlaying.schoolID = schools.schoolID
+JOIN Salaries ON allstarfull.playerID = Salaries.playerID
+WHERE schools.name_full = "Brigham Young University-Idaho"
+ORDER BY Salaries.salary DESC
+LIMIT 5;
+
 
 '''
-```
-
-
-
-```{python}
-
 con = sqlite3.connect(sqlite_file)
 results = pd.read_sql_query(p,con)
 results.tail()
-
-
 ```
+
 
 
 ## QUESTION|TASK 2
 __This three-part question requires you to calculate batting average (number of hits divided by the number of at-bats) Write an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report. Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results. Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results__
 
 
-_type your results and analysis here_
+_the analysis shows the first five batting average with at least 1 at bat, the first five batting average with at least 10 at bat and the Table per player with at least 100 at bat. Overall this three table gives us insight about batting averages  _
 
 ```{python}
 #| label: Q2
 #| code-summary: Read and format data
+#| fig-cap: "Table of the first five batting average with at least 1 at bat"
 # Include and execute your code here
 
 q = '''
@@ -122,15 +116,14 @@ results.head()
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
+
 
 ```{python}
 #| label: Q2 chart
 #| code-summary: plot example
-#| fig-cap: "My useless chart"
+#| fig-cap: "Table of the first five batting average with at least 10 at bat"
 #| fig-align: center
 # Include and execute your code here
-# Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.
 
 q2 = '''
 SELECT playerID , yearID, ROUND(H*1.0/AB,3) AS Batting_average 
@@ -148,10 +141,10 @@ results.head()
 ```{python}
 #| label: Q2 table
 #| code-summary: table example
-#| tbl-cap: "Not much of a table"
+#| tbl-cap: "Table per player with at least 100 at bat"
 #| tbl-cap-location: top
 # Include and execute your code here
-# Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results
+
 q3 ='''
 SELECT playerID, ROUND(SUM(H)*1.0/SUM(AB), 3) AS Batting_average 
 FROM Batting
@@ -171,12 +164,14 @@ results.head()
 
 __Pick any two baseball teams and compare them using a metric of your choice (average salary, home runs, number of wins, etc). Write an SQL query to get the data you need, then make a graph using Plotly Express to visualize the comparison. What do you learn?__
 
-_type your results and analysis here_
+_ From the Chart showing comparing the Yankee and the Dodgers winning ratio we notice that overall the yankees performed better than the dodgers having the highest winning ratio thee years (1927 :0.71 victory per game, 1939:0.7 victory per game and 1998:0.7 victory per game)_
 
 ```{python}
 #| label: Q3
 #| code-summary: Read and format data
+#| tbl-cap: "New York Yankees and Los Angeles Dodgers winning and lossing ratio "
 # Include and execute your code here
+
 q4 = '''
 SELECT teamID , name,ROUND(W*1.0/G,2) AS Wining_ratio,Round(L*1.0/G) AS Losing_ratio, yearID
 FROM Teams
@@ -190,7 +185,7 @@ results
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
+
 
 ```{python}
 #| label: Q3 chart
