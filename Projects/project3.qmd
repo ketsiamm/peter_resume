@@ -46,8 +46,7 @@ _A SHORT (4-5 SENTENCES) PARAGRAPH THAT `DESCRIBES KEY INSIGHTS` TAKEN FROM METR
 #| code-summary: Read and format project data
 # Include and execute your code here
 
-import sqlite3
-import pandas as pd
+
 
 sqlite_file = "C:\\Users\\ketsi\\OneDrive\\Desktop\\lahmansbaseballdb.sqlite"
 con = sqlite3.connect(sqlite_file)
@@ -98,43 +97,10 @@ results.tail()
 
 ```
 
-_include figures in chunks and discuss your findings in the figure._
-
-```{python}
-#| label: Q1 chart
-#| code-summary: plot example
-#| fig-cap: "My useless chart"
-#| fig-align: center
-# Include and execute your code here
-# chart = px.bar(df.head(200),
-#     x="name", 
-#     y="AK"
-# )
-# chart.show()
-```
-
-
-```{python}
-#| label: Q1 table
-#| code-summary: table example
-#| tbl-cap: "Not much of a table"
-#| tbl-cap-location: top
-# Include and execute your code here
-# mydat = df.head(1000)\
-#     .groupby('year')\
-#     .sum()\
-#     .reset_index()\
-#     .tail(10)\
-#     .filter(["year", "AK","AR"])
-
-# display(mydat)
-
-```
-
 
 ## QUESTION|TASK 2
+__This three-part question requires you to calculate batting average (number of hits divided by the number of at-bats) Write an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report. Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results. Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results__
 
-__COPY PASTE QUESTION|TASK 2 FROM THE PROJECT HERE__
 
 _type your results and analysis here_
 
@@ -143,6 +109,16 @@ _type your results and analysis here_
 #| code-summary: Read and format data
 # Include and execute your code here
 
+q = '''
+SELECT playerID , yearID, ROUND(H*1.0/AB,3) AS Batting_average 
+FROM Batting
+WHERE AB>1
+ORDER BY Batting_average DESC, playerID 
+LIMIT 5
+'''
+con = sqlite3.connect(sqlite_file)
+results = pd.read_sql_query(q,con)
+results.head()
 
 ```
 
@@ -154,11 +130,18 @@ _include figures in chunks and discuss your findings in the figure._
 #| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-# chart = px.bar(df.head(200),
-#     x="name", 
-#     y="AK"
-# )
-# chart.show()
+# Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.
+
+q2 = '''
+SELECT playerID , yearID, ROUND(H*1.0/AB,3) AS Batting_average 
+FROM Batting
+WHERE AB>=10
+ORDER BY Batting_average DESC, playerID 
+LIMIT 5
+'''
+con = sqlite3.connect(sqlite_file)
+results = pd.read_sql_query(q2,con)
+results.head()
 ```
 
 
@@ -168,21 +151,25 @@ _include figures in chunks and discuss your findings in the figure._
 #| tbl-cap: "Not much of a table"
 #| tbl-cap-location: top
 # Include and execute your code here
-# mydat = df.head(1000)\
-#     .groupby('year')\
-#     .sum()\
-#     .reset_index()\
-#     .tail(10)\
-#     .filter(["year", "AK","AR"])
+# Now calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats, and print the top 5 results
+q3 ='''
+SELECT playerID, ROUND(SUM(H)*1.0/SUM(AB), 3) AS Batting_average 
+FROM Batting
+WHERE AB >= 100
+GROUP BY playerID
+ORDER BY Batting_average DESC, playerID 
+LIMIT 5;
 
-# display(mydat)
-
+'''
+con = sqlite3.connect(sqlite_file)
+results = pd.read_sql_query(q3,con)
+results.head()
 ```
 
 
 ## QUESTION|TASK 3
 
-__COPY PASTE QUESTION|TASK 3 FROM THE PROJECT HERE__
+__Pick any two baseball teams and compare them using a metric of your choice (average salary, home runs, number of wins, etc). Write an SQL query to get the data you need, then make a graph using Plotly Express to visualize the comparison. What do you learn?__
 
 _type your results and analysis here_
 
@@ -190,7 +177,16 @@ _type your results and analysis here_
 #| label: Q3
 #| code-summary: Read and format data
 # Include and execute your code here
+q4 = '''
+SELECT teamID , name,ROUND(W*1.0/G,2) AS Wining_ratio,Round(L*1.0/G) AS Losing_ratio, yearID
+FROM Teams
+WHERE name = 'New York Yankees'OR name='Los Angeles Dodgers'
 
+
+'''
+con = sqlite3.connect(sqlite_file)
+results = pd.read_sql_query(q4,con)
+results
 
 ```
 
@@ -199,30 +195,14 @@ _include figures in chunks and discuss your findings in the figure._
 ```{python}
 #| label: Q3 chart
 #| code-summary: plot example
-#| fig-cap: "My useless chart"
 #| fig-align: center
 # Include and execute your code here
-# chart = px.bar(df.head(200),
-#     x="name", 
-#     y="AK"
-# )
-# chart.show()
+chart = px.line(results,
+    x= "yearID" ,
+    y="Wining_ratio",
+    color= "name",
+    title= "Yankees and Dodger winning ratio over the years"
+)
+chart.show()
 ```
 
-
-```{python}
-#| label: Q3 table
-#| code-summary: table example
-#| tbl-cap: "Not much of a table"
-#| tbl-cap-location: top
-# Include and execute your code here
-# mydat = df.head(1000)\
-#     .groupby('year')\
-#     .sum()\
-#     .reset_index()\
-#     .tail(10)\
-#     .filter(["year", "AK","AR"])
-
-# display(mydat)
-
-```
