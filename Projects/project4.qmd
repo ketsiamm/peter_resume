@@ -113,7 +113,7 @@ __Build a classification model labeling houses as being built “before 1980” 
 _ for my model i use a the Random Forest Classifier. In essence, a Random Forest Classifier combines the opinions of many decision-makers (trees) to make a more  reliable prediction. i tried the decision tree classifier and the MLP Classifier _
 
 ```{python}
-#| label: Q2
+#| label: Q2 table
 #| code-summary: Read and format data
 # Include and execute your code here
 import pandas as pd
@@ -138,7 +138,8 @@ y_pred = model.predict(test_data)
 # Calculate accuracy
 accuracy = accuracy_score(test_targets, y_pred)
 
-print(f"Accuracy:", accuracy)
+print(f"Accuracy: {accuracy:.2f}")
+
 
 ```
 
@@ -153,7 +154,7 @@ _ i decided to choose the Random Forest Classifier because it uses more trees to
  -for the number of bedroom we can clearly see that most of the houses whith highest room are build before 1950     _
 
 ```{python}
-#| label: Q3
+#| label: Q3 table
 #| code-summary: Read and format data
 # Include and execute your code here
 
@@ -211,14 +212,14 @@ chart.show()
 
 ```
 
-## QUESTION|TASK 3
+## QUESTION|TASK 4
 
 __Describe the quality of your classification model using 2-3 different evaluation metrics. You also need to explain how to interpret each of the evaluation metrics you use.__
 
 _ to evaluate the quality of my classification model i used the F1 score and the precision score.  precision measures the accuracy of positive predictions, while the F1 score provides a balanced measure of precision and recall. Both metrics are valuable for evaluating classifier performance._
 
 ```{python}
-#| label: Q3 table
+#| label: Q4 table
 #| code-summary: table example
 #| tbl-cap-location: top
 # Include and execute your code here
@@ -252,7 +253,7 @@ print("F1 Score:", f1)
 ```
 
 ```{python}
-#| label: Q2
+#| label: Q4 chart
 #| code-summary: Read and format data
 # Include and execute your code here
 import pandas as pd
